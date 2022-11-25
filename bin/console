@@ -11,5 +11,8 @@ require "stanbic"
 # require "pry"
 # Pry.start
 
+client = Stanbic::Client.new(api_key: ENV["STANBIC_API_KEY"])
+
 require "irb"
 IRB.start(__FILE__)
+

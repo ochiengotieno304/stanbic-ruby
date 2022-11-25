@@ -3,6 +3,6 @@
 require_relative "stanbic/version"
 
 module Stanbic
-  class Error < StandardError; end
-  # Your code goes here...
+  autoload :Client, "stanbic/client"
+  autoload :Error, "stanbic/error"
 end
