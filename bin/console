@@ -11,8 +11,21 @@ require "stanbic"
 # require "pry"
 # Pry.start
 
-client = Stanbic::Client.new(api_key: ENV["STANBIC_API_KEY"])
+def reload!(print = true)
+  puts "Reloading ..." if print
+  # Main project directory.
+  root_dir = File.expand_path("..", __dir__)
+  # Directories within the project that should be reloaded.
+  reload_dirs = %w[lib]
+  # Loop through and reload every file in all relevant project directories.
+  reload_dirs.each do |dir|
+    Dir.glob("#{root_dir}/#{dir}/**/*.rb").each { |f| load(f) }
+  end
+  # Return true when complete.
+  true
+end
+
+client = Stanbic::Client.new(token: ENV["TOKEN"])
 
 require "irb"
 IRB.start(__FILE__)
-

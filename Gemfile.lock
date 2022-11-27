@@ -4,6 +4,7 @@ PATH
     stanbic (0.1.0)
       faraday (~> 1.7)
       faraday_middleware (~> 1.2)
+      multi_xml
 
 GEM
   remote: https://rubygems.org/
@@ -38,7 +39,9 @@ GEM
     json (2.6.2)
     method_source (1.0.0)
     minitest (5.16.3)
+    multi_xml (0.6.0)
     multipart-post (2.2.3)
+    oj (3.13.23)
     parallel (1.22.1)
     parser (3.1.2.1)
       ast (~> 2.4.1)
@@ -70,6 +73,7 @@ PLATFORMS
 
 DEPENDENCIES
   minitest (~> 5.0)
+  oj
   pry
   rake (~> 13.0)
   rubocop (~> 1.21)
