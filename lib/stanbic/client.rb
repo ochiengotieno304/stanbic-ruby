@@ -12,7 +12,7 @@ module Stanbic
       @adapter = adapter
     end
 
-  @body = '{
+    @body_stanbic_payments = '{
   "originatorAccount": {
     "identification": {
       "mobileNumber": "0743287562"
@@ -50,7 +50,7 @@ module Stanbic
   }
 }'
 
-  @body_loan = '{
+    @body_loan = '{
   "RequestId": "67dhbbs-dgjsnh76-shjbs87sg-ahsfnn",
   "EntityName": "",
   "EntityProduct": "LOAN",
@@ -70,6 +70,10 @@ module Stanbic
 
     def create_loan(_params)
       request(http_method: :post, endpoint: "create-loan", params: params)
+    end
+
+    def inter_bank_transfer_pesalink(_params)
+      request(http_method: :post, endpoint: "pesalink-payments/pesalink-transfer", params: params)
     end
 
     def inspect
