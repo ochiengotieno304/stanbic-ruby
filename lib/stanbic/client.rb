@@ -12,7 +12,7 @@ module Stanbic
       @adapter = adapter
     end
 
-    @body = '{
+  @body = '{
   "originatorAccount": {
     "identification": {
       "mobileNumber": "0743287562"
@@ -49,8 +49,27 @@ module Stanbic
     "endToEndIdentification": "5e1a3da132cc"
   }
 }'
+
+  @body_loan = '{
+  "RequestId": "67dhbbs-dgjsnh76-shjbs87sg-ahsfnn",
+  "EntityName": "",
+  "EntityProduct": "LOAN",
+  "LoanAmount": "1000.00",
+  "LoanCurrency": "KES",
+  "LoanTerm": "14D",
+  "PaymentReferenceId": "EBLEB109209192019",
+  "CallBackUrl": "https://partner.com/embeddedlending/v1/callback",
+  "MaxAllowedLimit": "70000.00",
+  "MobileNumber": "254114507894",
+  "DisbursementMode": "ACCOUNT"
+}'
+
     def stanbic_payments(_params)
       request(http_method: :post, endpoint: "stanbic-payments", params: @body)
+    end
+
+    def create_loan(_params)
+      request(http_method: :post, endpoint: "create-loan", params: params)
     end
 
     def inspect
