@@ -15,24 +15,35 @@ If bundler is not being used to manage dependencies, install the gem by executin
 ### Initialize Stanbic Client
 
 ```ruby
-client = Stanbic::Client.new(api_key: ENV['STANBIC_API_KEY'], api_secret: ENV['STANBIC_API_SECRET)
+require "stanbic"
+@client = Stanbic::Client.new(api_key: ENV['STANBIC_API_KEY'], api_secret: ENV['STANBIC_API_SECRET)
 ```
 
-### Make Stanbic Payments
+Make API calls using the @client object
+
+### Payments to Stanbic Accounts
 ```ruby
-client.stanbic_payments(to_account, amount)
+send_to_stanbic = @client.stanbic_payments(to_account, amount)
 ```
 
-### Make Mobile Payments
+- `to_account`: stanbic recipient account number`REQUIRED`
+- `amount`: amount to transact `REQUIRED`
+
+
+### Send Money to Mobile Money APIs
 ```ruby
-client.stanbic_payments(to_account, amount)
+client.stanbic_payments(sender, receipient, amount, provider)
+```
+Example:
+```shell
+client.stanbic_payments(sender, receipient, amount, provider)
 ```
 
 ## Development
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/stanbic.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ochiengotieno304/stanbic.
 
 ## License
 
