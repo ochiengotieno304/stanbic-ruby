@@ -15,11 +15,20 @@ If bundler is not being used to manage dependencies, install the gem by executin
     $ gem install stanbic
 
 ## Usage
+### Initialize Stanbic Client
 
 ```ruby
-client = Stanbic::Client.new(api_key: ENV['STANBIC_API_KEY'])
-client.applications
-client.region
+client = Stanbic::Client.new(api_key: ENV['STANBIC_API_KEY'], api_secret: ENV['STANBIC_API_SECRET)
+```
+
+### Make Stanbic Payments
+```ruby
+client.stanbic_payments(to_account, amount, originator_phone)
+```
+
+### Make Mobile Payments
+```ruby
+client.stanbic_payments(to_account, amount, originator_phone)
 ```
 
 ## Development
