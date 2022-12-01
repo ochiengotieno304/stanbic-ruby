@@ -4,6 +4,7 @@ PATH
     stanbic (0.1.0)
       faraday (~> 1.7)
       faraday_middleware (~> 1.2)
+      json
       multi_xml
       oauth2 (~> 2.0)
 

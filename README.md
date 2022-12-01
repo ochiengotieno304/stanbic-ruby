@@ -20,12 +20,12 @@ client = Stanbic::Client.new(api_key: ENV['STANBIC_API_KEY'], api_secret: ENV['S
 
 ### Make Stanbic Payments
 ```ruby
-client.stanbic_payments(to_account, amount, originator_phone)
+client.stanbic_payments(to_account, amount)
 ```
 
 ### Make Mobile Payments
 ```ruby
-client.stanbic_payments(to_account, amount, originator_phone)
+client.stanbic_payments(to_account, amount)
 ```
 
 ## Development

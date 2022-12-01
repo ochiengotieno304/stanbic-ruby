@@ -1,5 +1,6 @@
 require "faraday"
 require "faraday_middleware"
+require "json"
 
 module Stanbic
   class Client
@@ -14,13 +15,13 @@ module Stanbic
       @currency_code = currency_code
     end
 
-    def stanbic_payments(account_to, amount, mobile)
+    def stanbic_payments(account_to, amount)
       dbs_reference_id = Random.rand(1_000_000_000_000)
       end_to_end_id = Random.rand(1_000_000_000)
       post_body = {
         "originatorAccount": {
           "identification": {
-            "mobileNumber": mobile.to_s
+            "mobileNumber": ""
           }
         },
 
