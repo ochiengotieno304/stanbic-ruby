@@ -29,15 +29,30 @@ send_to_stanbic = @client.stanbic_payments(to_account, amount)
 - `to_account`: stanbic recipient account number`REQUIRED`
 - `amount`: amount to transact `REQUIRED`
 
+### Inter-Bank Transfers API via Pesalink
+```ruby
+inter_bank_transfer = @client.stanbic_payments(to_account, amount)
+```
+
+- `to_account`: stanbic recipient account number`REQUIRED`
+- `amount`: amount to transact `REQUIRED`
+
+
 
 ### Send Money to Mobile Money APIs
 ```ruby
-client.stanbic_payments(sender, receipient, amount, provider)
+mobile_transfer = @client.mobile_payments(sender, receipient, amount, provider)
 ```
-Example:
-```shell
-client.stanbic_payments(sender, receipient, amount, provider)
-```
+- `sender`: sender mobile number`REQUIRED`
+- `receipient`: receipient mobile number `REQUIRED`
+- `amount`: amount to transact `REQUIRED`
+- `provider`: mobile provider `REQUIRED`
+
+- providers :
+  - MPESA
+  - T-KASH
+  -  AIRTEL MONEY
+
 
 ## Development
 

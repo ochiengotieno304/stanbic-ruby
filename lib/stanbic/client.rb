@@ -68,12 +68,55 @@ module Stanbic
       request(http_method: :post, endpoint: "stanbic-payments", params: post_body)
     end
 
-    def inter_bank_transfer(options)
-      request(http_method: :post, endpoint: "pesalink-payments", params: options)
+    def mobile_transfer(sender, receipient, amount, provider)
+      # PROVIDERS = {
+      #   MPESA,
+      #   T-KASH,
+      #   AIRTET MONEY
+      # }
+      dbs_reference_id = Random.rand(1_000_000_000_000)
+      end_to_end_id = Random.rand(1_000_000_000)
+      post_body = {
+        "originatorAccount": {
+          "identification": {
+            "mobileNumber": sender.to_s
+          }
+        },
+        "requestedExecutionDate": Time.now.strftime("%Y-%m-%d"),
+        "dbsReferenceId": dbs_reference_id.to_s,
+        "txnNarrative": "TRANSACTION NARRATIVE",
+        "callBackUrl": "http://client_domain.com/omnichannel/esbCallback",
+        "transferTransactionInformation": {
+          "instructedAmount": {
+            "amount": amount.to_s,
+            "currencyCode": currency_code
+          },
+          "mobileMoneyMno": {
+            "name": provider.to_s
+          },
+          "counterparty": {
+            "name": "J. Sparrow",
+            "mobileNumber": receipient.to_s,
+            "postalAddress": {
+              "addressLine1": "Some street",
+              "addressLine2": "99",
+              "postCode": "1100 ZZ",
+              "town": "Amsterdam",
+              "country": "NL"
+            }
+          },
+          "remittanceInformation": {
+            "type": "UNSTRUCTURED",
+            "content": "SALARY"
+          },
+          "endToEndIdentification": end_to_end_id.to_s
+        }
+      }
+      request(http_method: :post, endpoint: "mobile-payments", params: post_body)
     end
 
     def mobile_money
-      request(http_method: :post, endpoint: "mobile-payments", params: options)
+      request(http_method: :post, endpoint: "pesalink-payments", params: options)
     end
 
     def inspect
