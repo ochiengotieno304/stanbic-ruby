@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.authors = ["Ochieng Otieno"]
   spec.email = ["ochiengotieno71@gmail.com"]
 
-  spec.summary = "Write a short summary, because RubyGems requires one."
-  spec.description = "Write a longer description or delete this line."
+  spec.summary = "Ruby SDK for Stanbic Kilele APIs"
+  spec.description = "Ruby SDK for Stanbic Kilele APIs"
   spec.homepage = "https://github.com/ochiengotieno304/stanbic-api-ruby-wrapper"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6.0"
@@ -32,6 +32,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "faraday", "~> 1.7"
   spec.add_dependency "faraday_middleware", "~> 1.2"
   spec.add_dependency "json"
-  spec.add_dependency "multi_xml"
   spec.add_dependency "oauth2", "~> 2.0"
 end

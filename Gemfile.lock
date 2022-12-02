@@ -5,7 +5,6 @@ PATH
       faraday (~> 1.7)
       faraday_middleware (~> 1.2)
       json
-      multi_xml
       oauth2 (~> 2.0)
 
 GEM
