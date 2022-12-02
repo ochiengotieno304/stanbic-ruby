@@ -13,74 +13,15 @@ require "stanbic"
 
 def reload!(print = true)
   puts "Reloading ..." if print
-  # Main project directory.
   root_dir = File.expand_path("..", __dir__)
-  # Directories within the project that should be reloaded.
   reload_dirs = %w[lib]
-  # Loop through and reload every file in all relevant project directories.
   reload_dirs.each do |dir|
     Dir.glob("#{root_dir}/#{dir}/**/*.rb").each { |f| load(f) }
   end
-  # Return true when complete.
   true
 end
 
 @client = Stanbic::Client.new(api_key: ENV["STANBIC_API_KEY"], api_secret: ENV["STANBIC_API_SECRET"])
-
-@body_loan = '{
-  "RequestId": "67dhbbs-dgjsnh76-shjbs87sg-ahsfnn",
-  "EntityName": "",
-  "EntityProduct": "LOAN",
-  "LoanAmount": "1000.00",
-  "LoanCurrency": "KES",
-  "LoanTerm": "14D",
-  "PaymentReferenceId": "EBLEB109209192019",
-  "CallBackUrl": "https://partner.com/embeddedlending/v1/callback",
-  "MaxAllowedLimit": "70000.00",
-  "MobileNumber": "254114507894",
-  "DisbursementMode": "ACCOUNT"
-}'
-
-@body_interbank_transfer = '{
-  "originatorAccount": {
-    "identification": {
-      "mobileNumber": "254737696956"
-    }
-  },
-  "requestedExecutionDate": "2022-12-01",
-  "sendMoneyTo": "MOBILE.NUMBER",
-  "dbsReferenceId": "98989271771176942",
-  "txnNarrative": "TESTPESALINK",
-  "callBackUrl": "https://clientdomain.com/client/Callback",
-  "transferTransactionInformation": {
-    "instructedAmount": {
-      "amount": "500",
-      "currencyCode": "KES"
-    },
-    "counterpartyAccount": {
-      "identification": {
-        "recipientMobileNo": "254743287562",
-        "recipientBankAcctNo": "01008747142",
-        "recipientBankCode": "07000"
-      }
-    },
-    "counterparty": {
-      "name": "HEZBON",
-      "postalAddress": {
-        "addressLine": "KENYA",
-        "postCode": "1100 ZZ",
-        "town": "Nairobi",
-        "country": "KE"
-      }
-    },
-    "remittanceInformation": {
-      "type": "FEES PAYMENTS",
-      "content": "SALARY"
-    },
-    "endToEndIdentification": "5e1a3da132cc"
-  }
-}'
-
 
 require "irb"
 IRB.start(__FILE__)
