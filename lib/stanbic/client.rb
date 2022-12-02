@@ -115,8 +115,19 @@ module Stanbic
       request(http_method: :post, endpoint: "mobile-payments", params: post_body)
     end
 
-    def mobile_money
+    def inter_bank_transfer
       request(http_method: :post, endpoint: "pesalink-payments", params: options)
+    end
+
+    def mpesa_checkout(mobile_number, amount, bill_account_ref)
+      dbs_reference_id = ([*("A".."Z"), *("0".."9")] - %w[0 1 I O]).sample(13).join
+      post_body = {
+        "dbsReferenceId": dbs_reference_id.to_s,
+        "billAccountRef": bill_account_ref.to_s,
+        "amount": amount.to_s,
+        "mobileNumber": mobile_number.to_s
+      }
+      request(http_method: :post, endpoint: "mpesa-checkout", params: post_body)
     end
 
     def inspect
@@ -165,19 +176,6 @@ module Stanbic
 
       # raise error_class, "Code: #{response.status}, response: #{response.body}"
     end
-
-    # def get_token(client_id:, client_secret:)
-    #   params = {
-    #     scope: "payments",
-    #     grant_type: "client_credentials",
-    #     client_id: client_id,
-    #     client_secret: client_secret
-    #   }
-
-    #   url = "https://api.connect.stanbicbank.co.ke/api/sandbox/auth/oauth2/token"
-
-    #   request(post, url, params)
-    # end
 
     # def error_class
     #   case response.status

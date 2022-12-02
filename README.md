@@ -1,17 +1,19 @@
 # Stanbic
+
 Stanbic Payment APIs ruby sdk
 
 ## Installation
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add stanbic
+    bundle add stanbic
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
-    $ gem install stanbic
+    gem install stanbic
 
 ## Usage
+
 ### Initialize Stanbic Client
 
 ```ruby
@@ -22,6 +24,7 @@ require "stanbic"
 Make API calls using the @client object
 
 ### Payments to Stanbic Accounts
+
 ```ruby
 send_to_stanbic = @client.stanbic_payments(to_account, amount)
 ```
@@ -29,20 +32,12 @@ send_to_stanbic = @client.stanbic_payments(to_account, amount)
 - `to_account`: stanbic recipient account number`REQUIRED`
 - `amount`: amount to transact `REQUIRED`
 
-### Inter-Bank Transfers API via Pesalink
-```ruby
-inter_bank_transfer = @client.stanbic_payments(to_account, amount)
-```
-
-- `to_account`: stanbic recipient account number`REQUIRED`
-- `amount`: amount to transact `REQUIRED`
-
-
-
 ### Send Money to Mobile Money APIs
+
 ```ruby
 mobile_transfer = @client.mobile_payments(sender, receipient, amount, provider)
 ```
+
 - `sender`: sender mobile number`REQUIRED`
 - `receipient`: receipient mobile number `REQUIRED`
 - `amount`: amount to transact `REQUIRED`
@@ -51,14 +46,35 @@ mobile_transfer = @client.mobile_payments(sender, receipient, amount, provider)
 - providers :
   - MPESA
   - T-KASH
-  -  AIRTEL MONEY
+  - AIRTEL MONEY
 
+### STK Push - M-Pesa Checkout
+
+```ruby
+  mpesa_checkout = @client.mpesa_checkout(mobile_number, amount, bill_account_ref)
+```
+
+- `mobile_number`: customer being charged mobile number`REQUIRED`
+- `amount`: amount being deducted from M-Pesa `REQUIRED`
+- `amount`: Stanbic account recieveing the funds `REQUIRED`
+
+### Inter-Bank Transfers API via Pesalink
+
+> **Note**
+> To be implemented
+
+```ruby
+inter_bank_transfer = @client.inter_bank_transfer
+```
+
+- `to_account`: stanbic recipient account number`REQUIRED`
+- `amount`: amount to transact `REQUIRED`
 
 ## Development
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ochiengotieno304/stanbic.
+Bug reports and pull requests are welcome on GitHub at <https://github.com/ochiengotieno304/stanbic>.
 
 ## License
 
