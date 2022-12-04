@@ -35,7 +35,7 @@ send_to_stanbic = @client.stanbic_payments(to_account, amount)
 ### Send Money to Mobile Money APIs
 
 ```ruby
-mobile_transfer = @client.mobile_payments(sender, receipient, amount, provider)
+mobile_transfer = @client.mobile_transfer(sender, receipient, amount, provider)
 ```
 
 - `sender`: sender mobile number`REQUIRED`
