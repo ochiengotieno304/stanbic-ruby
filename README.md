@@ -56,7 +56,7 @@ mobile_transfer = @client.mobile_transfer(sender, receipient, amount, provider)
 
 - `mobile_number`: customer being charged mobile number`REQUIRED`
 - `amount`: amount being deducted from M-Pesa `REQUIRED`
-- `amount`: Stanbic account recieveing the funds `REQUIRED`
+- `bill_account_ref`: Stanbic account recieveing the funds `REQUIRED`
 
 ### Inter-Bank Transfers API via Pesalink
 
